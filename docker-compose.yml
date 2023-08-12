@@ -51,6 +51,8 @@ services:
     profiles: ["postgres"]
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
     stop_grace_period: "3s"
+    ports:
+      - '5432:5432'
     volumes:
       - "postgres:/var/lib/postgresql/data"
 
