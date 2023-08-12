@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :friends
+  get "/home", to: 'home#index'
   root to: "pages#home"
 
   get "/up/", to: "up#index", as: :up
