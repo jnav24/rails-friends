@@ -373,6 +373,12 @@ couple of free and paid resources. There's Google too!
   is a course I created which goes over the Docker and Docker Compose
   fundamentals
 
+### Gems Locations
+
+When you install Gems, they are located within your `web` Docker environment at `ls -alF /usr/local/bundle/gems`
+
+You can run `gem environment` in the Docker environment and look at `Gem Path`
+
 ### Deploy to production
 
 I'm creating an in-depth course related to deploying Dockerized web apps. If
