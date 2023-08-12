@@ -1,0 +1,34 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl text-gray-500">Friends</h1>
+    <%= link_to "Add friend", new_friend_path, class: 'bg-green-500 rounded-lg py-2 px-8 inline-block shadow hover:bg-green-600 text-white' %>
+</div>
+
+<div class="bg-white rounded-lg shadow-md mb-6 border border-gray-100">
+    <div class="flex items-center justify-between border-b border-gray-100 text-gray-500">
+        <div class="w-2/12 pl-2 py-2">First Name</div>
+        <div class="w-2/12 pl-2 py-2">Last Name</div>
+        <div class="w-2/12 pl-2 py-2">Email</div>
+        <div class="w-2/12 pl-2 py-2">Phone</div>
+        <div class="w-2/12 pl-2 py-2">Twitter</div>
+        <div class="flex-1">Actions</div>
+    </div>
+
+    <% @friends.each do | friend | %>
+        <div class="flex items-center justify-between text-gray-800 even:bg-gray-100">
+            <div class="w-2/12 pl-2 py-2"><%= link_to friend.first_name, friend, class: 'underline text-cyan-600' %></div>
+            <div class="w-2/12 pl-2 py-2"><%= friend.last_name %></div>
+            <div class="w-2/12 pl-2 py-2 truncate"><%= friend.email %></div>
+            <div class="w-2/12 pl-2 py-2"><%= friend.phone_number %></div>
+            <div class="w-2/12 pl-2 py-2"><%= friend.twitter %></div>
+            <div class="flex-1">
+                <%= link_to "View", friend_path(:id => friend.id), class: 'underline' %>
+                <% if friend.user == current_user %>
+                    <%= link_to "Edit", edit_friend_path(:id => friend.id), class: 'underline' %>
+                    <%= link_to "Delete", friend, data: { turbo_confirm: "Are you sure you want to delete this friend?", "turbo-method": :delete }, class: 'underline' %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>
